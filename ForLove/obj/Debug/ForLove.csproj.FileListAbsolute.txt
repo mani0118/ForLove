@@ -64,6 +64,5 @@ C:\Users\ASUS\Documents\GitHub\ForLove\ForLove\bin\Microsoft.Owin.Security.OAuth
 C:\Users\ASUS\Documents\GitHub\ForLove\ForLove\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\ASUS\Documents\GitHub\ForLove\ForLove\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\ASUS\Documents\GitHub\ForLove\ForLove\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Users\ASUS\Documents\GitHub\ForLove\ForLove\obj\Debug\ForLove.csprojResolveAssemblyReference.cache
 C:\Users\ASUS\Documents\GitHub\ForLove\ForLove\obj\Debug\ForLove.dll
 C:\Users\ASUS\Documents\GitHub\ForLove\ForLove\obj\Debug\ForLove.pdb

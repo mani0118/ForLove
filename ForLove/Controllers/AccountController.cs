@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using ForLove.Models;
+using System.Text.RegularExpressions;
 
 namespace ForLove.Controllers
 {
@@ -65,30 +66,17 @@ namespace ForLove.Controllers
         // POST: /Account/Login
         [HttpPost]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
+        public  ActionResult Login(LoginViewModel model, string returnUrl)
         {
-            if (!ModelState.IsValid)
-            {
+            if (string.IsNullOrWhiteSpace(model.phone_number) || string.IsNullOrWhiteSpace(model.Password))
                 return View(model);
-            }
+            Regex vReg = new Regex(@"^(((13[0-9]{1})|(15[0-9]{1}))+\d{8})$");
+            if (!vReg.IsMatch(model.phone_number))
+                return View(model);
+            if (model.Password.Equals("111111"))
+                return RedirectToAction("Index", "Home");
 
-            // 这不会计入到为执行帐户锁定而统计的登录失败次数中
-            // 若要在多次输入错误密码的情况下触发帐户锁定，请更改为 shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
-            switch (result)
-            {
-                case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
-                case SignInStatus.LockedOut:
-                    return View("Lockout");
-                case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
-                case SignInStatus.Failure:
-                default:
-                    ModelState.AddModelError("", "无效的登录尝试。");
-                    return View(model);
-            }
+            return View(model);
         }
 
         //
@@ -146,7 +134,6 @@ namespace ForLove.Controllers
         // POST: /Account/Register
         [HttpPost]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
             if (ModelState.IsValid)

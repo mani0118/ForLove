@@ -56,7 +56,7 @@ namespace ForLove.Models
         [Required(AllowEmptyStrings = false,ErrorMessage ="手机号不能为空")]
         [Display(Name ="手机号")]
         [Phone(ErrorMessage ="请输入正确的手机号")]
-        public string Mobile { get; set; }
+        public string phone_number { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
