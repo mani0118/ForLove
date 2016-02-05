@@ -13,6 +13,11 @@ namespace ForLove.Controllers
             return View();
         }
 
+        public ActionResult TimeLine()
+        {
+            return View();
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

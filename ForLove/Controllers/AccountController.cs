@@ -74,7 +74,7 @@ namespace ForLove.Controllers
             if (!vReg.IsMatch(model.phone_number))
                 return View(model);
             if (model.Password.Equals("111111"))
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("TimeLine", "Home");
 
             return View(model);
         }
